@@ -16,8 +16,7 @@ This matches the accepted value for silicon diodes of approximately −2 mV/K.
 
 ## What this does
 
-
-This models how much voltage is needed to drive a given current through a silicon p-n junction, and how that changes with temperature and series resistance. Since a diode is the simplest device you can build from doped silicon — and a transistor is essentially two of them — understanding its behavior is the foundation for understanding semiconductor devices generally.
+This models how much voltage is needed to drive a given current through a silicon p-n junction, and how that changes with temperature and series resistance.
 
 ## The physics
 
@@ -28,16 +27,22 @@ I = I_S · ( exp( V / (n·V_T) ) − 1 )
 where V_T = kT/q is the thermal voltage (about 25.9 mV at room temperature)
 and I_S is the reverse saturation current.
 
-
-The number of electrons with enough thermal energy to cross the junction barrier follows a Boltzmann distribution, which falls off exponentially with barrier height. Applying forward voltage lowers the barrier, so the number of carriers that make it across grows exponentially. Since V_T ≈ 26 mV, every 60 mV multiplies the current by ten.
+[Why is the relationship exponential?]
+Electron energies follow a Boltzmann distribution, so the fraction with enough energy to cross the junction barrier falls off exponentially with barrier height. Forward voltage lowers that barrier, so the number of carriers crossing rises exponentially with applied voltage.
+[What does the −1 term do?]
+Without the −1, the equation would predict current flowing with zero voltage applied. A free energy machine. The −1 makes them cancel exactly.
+[Why does a diode conduct almost nothing until about 0.6 V?]
+0.6V is the volatge required for the electrons to overcome the depletion region and flow through the diode. Rearranging the diode equation shows that multiplying the current by a factor of ten costs about 60 mV of additional forward voltage. Moving from picoamps of background leakage to milliamps of operating current spans nine factors of ten. Multiplying nine factors of ten by 60 mV yields 540 mV, or about 0.54 V. Because of this, a diode with a larger initial leakage current requires fewer factors of ten to reach operating current, which causes it to turn on at a lower voltage. 
 The saturation current depends strongly on temperature:
 
 I_S(T) = I_S(T_ref) · (T/T_ref)³ · exp[ (E_g/nk) · (1/T_ref − 1/T) ]
 
-
-Electrons need 1.12 eV to cross silicon's bandgap, while thermal energy at room temperature is only about 0.026 eV. Only the extreme tail of the energy distribution qualifies, and heating shifts that tail dramatically. The model shows I_S growing 774× between 300 K and 350 K.
-
-Solving for voltage gives V = n·V_T·ln(I/I_S). Raising temperature increases V_T by 17% over this range, which alone would raise the required voltage — but it also increases I_S by a factor of 774, shrinking the logarithm by 29%. The second effect dominates, so forward voltage falls at −2.02 mV/K.
+[Why does heating a semiconductor free more carriers? What role is the
+bandgap playing?]
+Electrons in silicon are bound and can't conduct until they absorb enough energy to cross the bandgap — 1.12 eV. Thermal energy at room temperature is only ~0.026 eV, so only electrons in the high tail of the energy distribution make it. therefore when temperature increases energy of electrons increases freeing exponentially more carriers.
+[Why does the diode turn on at a LOWER voltage when it's hotter, even
+though you might expect more resistance?]
+Temperature affects the required voltage in two competing ways. As the diode gets hotter, thermal voltage rises by 17%, which on its own would require a higher voltage. However, the background leakage current grows so rapidly that it shrinks the logarithmic part of the equation by 29%. Since the second effect dominates, the net result is that forward voltage falls at −2.02 mV/K.
 ## Running it
 
     pip install numpy matplotlib
@@ -48,8 +53,8 @@ Produces `diode_iv.png` and prints the extracted temperature coefficient.
 ## What I learned
 
 - [Be specific. Include something you got wrong at first.]
-- [The 0.6 V turn-on voltage isn't a fundamental constant — it falls out of climbing nine decades of an exponential from picoamp leakage.]
-- [Temperature affects the diode through two competing terms, and the intuitive one (thermal voltage rising) is the one that loses.]
+- [unlike metal where higher temperature rather increases the resistance, in diode, higher temperature lowers the voltage required to have electrons flow thorugh. lowering resistance. ]
+- [thermal energy increases the probability of a charge having enough energy to cross a barrier of height ]
 
 ---
-[Aaron Suh]
+Aaron Suh
