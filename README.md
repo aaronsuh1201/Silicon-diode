@@ -28,10 +28,15 @@ where V_T = kT/q is the thermal voltage (about 25.9 mV at room temperature)
 and I_S is the reverse saturation current.
 
 [Why is the relationship exponential?]
+
 Electron energies follow a Boltzmann distribution, so the fraction with enough energy to cross the junction barrier falls off exponentially with barrier height. Forward voltage lowers that barrier, so the number of carriers crossing rises exponentially with applied voltage.
+
 [What does the −1 term do?]
+
 Without the −1, the equation would predict current flowing with zero voltage applied. A free energy machine. The −1 makes them cancel exactly.
+
 [Why does a diode conduct almost nothing until about 0.6 V?]
+
 0.6V is the volatge required for the electrons to overcome the depletion region and flow through the diode. Rearranging the diode equation shows that multiplying the current by a factor of ten costs about 60 mV of additional forward voltage. Moving from picoamps of background leakage to milliamps of operating current spans nine factors of ten. Multiplying nine factors of ten by 60 mV yields 540 mV, or about 0.54 V. Because of this, a diode with a larger initial leakage current requires fewer factors of ten to reach operating current, which causes it to turn on at a lower voltage. 
 The saturation current depends strongly on temperature:
 
@@ -39,9 +44,11 @@ I_S(T) = I_S(T_ref) · (T/T_ref)³ · exp[ (E_g/nk) · (1/T_ref − 1/T) ]
 
 [Why does heating a semiconductor free more carriers? What role is the
 bandgap playing?]
+
 Electrons in silicon are bound and can't conduct until they absorb enough energy to cross the bandgap — 1.12 eV. Thermal energy at room temperature is only ~0.026 eV, so only electrons in the high tail of the energy distribution make it. therefore when temperature increases energy of electrons increases freeing exponentially more carriers.
 [Why does the diode turn on at a LOWER voltage when it's hotter, even
 though you might expect more resistance?]
+
 Temperature affects the required voltage in two competing ways. As the diode gets hotter, thermal voltage rises by 17%, which on its own would require a higher voltage. However, the background leakage current grows so rapidly that it shrinks the logarithmic part of the equation by 29%. Since the second effect dominates, the net result is that forward voltage falls at −2.02 mV/K.
 ## Running it
 
