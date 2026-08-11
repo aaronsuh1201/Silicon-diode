@@ -46,6 +46,7 @@ I_S(T) = I_S(T_ref) · (T/T_ref)³ · exp[ (E_g/nk) · (1/T_ref − 1/T) ]
 bandgap playing?]
 
 Electrons in silicon are bound and can't conduct until they absorb enough energy to cross the bandgap — 1.12 eV. Thermal energy at room temperature is only ~0.026 eV, so only electrons in the high tail of the energy distribution make it. therefore when temperature increases energy of electrons increases freeing exponentially more carriers.
+
 [Why does the diode turn on at a LOWER voltage when it's hotter, even
 though you might expect more resistance?]
 
