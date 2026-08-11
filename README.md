@@ -62,7 +62,6 @@ Produces `diode_iv.png` and prints the extracted temperature coefficient.
 
 ## What I learned
 
-- [Be specific. Include something you got wrong at first.]
 - [unlike metal where higher temperature rather increases the resistance, in diode, higher temperature lowers the voltage required to have electrons flow thorugh. lowering resistance. ]
 - [thermal energy increases the probability of a charge having enough energy to cross a barrier of height ]
 
