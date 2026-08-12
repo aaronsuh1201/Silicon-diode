@@ -24,7 +24,7 @@ plotted, current spans approximately [N] decades.
 Holding forward current fixed at 10 mA and sweeping temperature from
 275 K to 350 K, forward voltage falls approximately linearly:
 
-    dV_f/dT = −2.02 mV/K
+dV_f/dT = −2.02 mV/K
 
 This agrees with the accepted value for silicon diodes of roughly
 −2 mV/K.
