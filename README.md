@@ -8,52 +8,50 @@ temperature dependence, and the effect of series resistance.
 ## Result
 
 **Panel 1 — Ideal diode at 300 K.**
-Current is modeled over 0 to 0.8 V at room temperature. The curve rises
-exponentially with no threshold term anywhere in the equation. On a
-linear current axis, current appears negligible until roughly 0.5-0.6 V
-and then climbs steeply, which is the origin of the usual "0.6 V turn-on
-voltage" rule of thumb. This is a consequence of plotting an exponential
-on linear axes, not a physical switching point.
+Current is modeled from 0 to 0.8 V at room temperature. The curve rises
+exponentially, with no threshold term anywhere in the equation. On a
+linear current axis current appears negligible until roughly 0.5–0.6 V
+and then climbs steeply, which is where the familiar "0.6 V turn-on
+voltage" rule of thumb comes from. This is an artifact of plotting an
+exponential on linear axes, not a physical switching point.
 
 **Panel 2 — Temperature dependence.**
-The same characteristic is plotted at 275 K, 300 K, 325 K, and 350 K.
-The curves shift toward lower voltage as temperature rises: a warmer
-diode reaches any given current at a smaller applied voltage.
+The same characteristic is plotted at 275, 300, 325, and 350 K. The
+curves shift toward lower voltage as temperature rises — 350 K is
+leftmost, 275 K rightmost. A warmer diode reaches any given current at a
+smaller applied voltage. At a fixed 10 mA the model requires 0.645 V at
+275 K but only 0.494 V at 350 K.
 
-Evaluated separately by holding forward current fixed at 10 mA and
-sweeping temperature across this range, the forward voltage falls
-approximately linearly at
+Fitting forward voltage against temperature at that fixed 10 mA gives
 
-    dV_f/dT = -2.02 mV/K
+    dV_f/dT = −2.02 mV/K
 
-consistent with the accepted value for silicon diodes of roughly
--2 mV/K. (This coefficient is computed from the model, not read off
-the panel above, which shows the shift only qualitatively.)
+consistent with the accepted value for silicon of roughly −2 mV/K.
+(The coefficient is fitted numerically; the panel shows the shift
+qualitatively.)
 
-The negative sign is the result of two competing temperature effects.
-The thermal voltage V_T = kT/q increases with temperature, which on its
-own would require a *higher* forward voltage to maintain fixed current.
-The saturation current I_S increases far more steeply, since I_S is
-proportional to n_i^2 and n_i^2 is proportional to T^3 * exp(-E_g/kT).
-The I_S term dominates, so forward voltage must decrease to hold current
-constant. Because E_g/q is the largest term in the analytical expression
-for dV_f/dT, this temperature coefficient is effectively an indirect
-measurement of the silicon band gap.
+The negative sign comes from two competing temperature effects. The
+thermal voltage V_T = kT/q rises with temperature, which alone would
+require a *higher* forward voltage to hold current constant. But the
+saturation current I_S rises far more steeply, since I_S ∝ n_i² and
+n_i² ∝ T³·exp(−E_g/kT). The I_S term dominates, so forward voltage must
+fall. Because E_g/q is the largest term in the analytical expression for
+dV_f/dT, this coefficient is effectively an indirect measurement of the
+silicon band gap.
 
 **Panel 3 — Effect of series resistance.**
 Current is plotted on a logarithmic axis for series resistance values of
-0.0, 0.1, and 0.5 ohms. On log axes the ideal (Rs = 0) diode is a
-straight line, which is the clearest visual confirmation of the
-exponential form.
+0.0, 0.1, and 0.5 Ω. On log axes the ideal (Rs = 0) case is a straight
+line, the clearest visual confirmation of the exponential form.
 
-All three curves coincide at low current, where the I*Rs voltage drop is
-negligible compared with the junction voltage. Above roughly 10 mA the
-finite-resistance curves bend away from the ideal line and flatten,
-because an increasing share of the applied voltage is dropped across the
-series resistance rather than across the junction. Larger Rs produces
-earlier and more pronounced bending. In this regime the junction is no
-longer the limiting element and the device behaves ohmically, a
-departure the ideal Shockley equation does not capture on its own.
+All three curves coincide at low current, where the I·Rs drop is
+negligible next to the junction voltage. Above roughly 10 mA the
+finite-resistance curves bend away and flatten, because an increasing
+share of the applied voltage is dropped across the series resistance
+rather than the junction. Larger Rs bends the curve earlier and harder.
+In this regime the junction is no longer the limiting element and the
+device behaves ohmically — a departure the ideal Shockley equation does
+not capture on its own.
 
 ## What this does
 
