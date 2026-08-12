@@ -3,7 +3,8 @@
 A numerical model of current flow through a silicon p-n junction, its
 temperature dependence, and the effect of series resistance.
 
-![I-V curves](diode_iv (1).png)
+![I-V curves](<img width="2250" height="660" alt="diode_iv (1)" src="https://github.com/user-attachments/assets/8eca00fb-70d8-496f-b24c-d0b090cc947d" />
+)
 
 ## Result
 
