@@ -77,12 +77,6 @@ though you might expect more resistance?]
 
 
 Temperature affects the required voltage in two competing ways. As the diode gets hotter, thermal voltage rises by 17%, which on its own would require a higher voltage. However, the background leakage current grows so rapidly that it shrinks the logarithmic part of the equation by 29%. Since the second effect dominates, the net result is that forward voltage falls at −2.02 mV/K.
-## Running it
-
-    pip install numpy matplotlib
-    python diode_iv.py
-
-Produces `diode_iv.png` and prints the extracted temperature coefficient.
 
 ## What I learned
 
