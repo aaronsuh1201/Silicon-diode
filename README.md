@@ -7,36 +7,53 @@ temperature dependence, and the effect of series resistance.
 
 ## Result
 
-**Figure 1 — I–V characteristic at 300 K.**
-The modeled current rises exponentially with forward voltage, with no
-threshold in the equation itself. Current becomes visible on a linear
-scale near [0.6] V, but this is a plotting artifact rather than a
-physical turn-on point.
+**Panel 1 — Ideal diode at 300 K.**
+Current is modeled over 0 to 0.8 V at room temperature. The curve rises
+exponentially with no threshold term anywhere in the equation. On a
+linear current axis, current appears negligible until roughly 0.5-0.6 V
+and then climbs steeply, which is the origin of the usual "0.6 V turn-on
+voltage" rule of thumb. This is a consequence of plotting an exponential
+on linear axes, not a physical switching point.
 
-**Figure 2 — Semi-log I–V characteristic.**
-Plotted on a log current axis, the forward region is a straight line,
-confirming the exponential form. The slope corresponds to roughly
-60 mV per decade of current at room temperature — i.e. current changes
-by a factor of 10 for every 60 mV of applied voltage. Over the range
-plotted, current spans approximately [N] decades.
+**Panel 2 — Temperature dependence.**
+The same characteristic is plotted at 275 K, 300 K, 325 K, and 350 K.
+The curves shift toward lower voltage as temperature rises: a warmer
+diode reaches any given current at a smaller applied voltage.
 
-**Figure 3 — Forward voltage vs. temperature at fixed current.**
-Holding forward current fixed at 10 mA and sweeping temperature from
-275 K to 350 K, forward voltage falls approximately linearly:
+Evaluated separately by holding forward current fixed at 10 mA and
+sweeping temperature across this range, the forward voltage falls
+approximately linearly at
 
-dV_f/dT = −2.02 mV/K
+    dV_f/dT = -2.02 mV/K
 
-This agrees with the accepted value for silicon diodes of roughly
-−2 mV/K.
+consistent with the accepted value for silicon diodes of roughly
+-2 mV/K. (This coefficient is computed from the model, not read off
+the panel above, which shows the shift only qualitatively.)
 
-The negative sign reflects two competing temperature effects. The
-thermal voltage V_T = kT/q rises with temperature, which alone would
-require *higher* forward voltage to hold current constant. But the
-saturation current I_S rises far more steeply, since I_S ∝ n_i² and
-n_i² ∝ T³·exp(−E_g/kT). The I_S term dominates, so forward voltage
-must fall to keep current fixed. Because E_g/q is the largest term in
-the analytical expression, this temperature coefficient is effectively
-an indirect measurement of the silicon band gap.
+The negative sign is the result of two competing temperature effects.
+The thermal voltage V_T = kT/q increases with temperature, which on its
+own would require a *higher* forward voltage to maintain fixed current.
+The saturation current I_S increases far more steeply, since I_S is
+proportional to n_i^2 and n_i^2 is proportional to T^3 * exp(-E_g/kT).
+The I_S term dominates, so forward voltage must decrease to hold current
+constant. Because E_g/q is the largest term in the analytical expression
+for dV_f/dT, this temperature coefficient is effectively an indirect
+measurement of the silicon band gap.
+
+**Panel 3 — Effect of series resistance.**
+Current is plotted on a logarithmic axis for series resistance values of
+0.0, 0.1, and 0.5 ohms. On log axes the ideal (Rs = 0) diode is a
+straight line, which is the clearest visual confirmation of the
+exponential form.
+
+All three curves coincide at low current, where the I*Rs voltage drop is
+negligible compared with the junction voltage. Above roughly 10 mA the
+finite-resistance curves bend away from the ideal line and flatten,
+because an increasing share of the applied voltage is dropped across the
+series resistance rather than across the junction. Larger Rs produces
+earlier and more pronounced bending. In this regime the junction is no
+longer the limiting element and the device behaves ohmically, a
+departure the ideal Shockley equation does not capture on its own.
 
 ## What this does
 
