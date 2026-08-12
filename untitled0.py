@@ -66,20 +66,20 @@ def thermal_voltage(T):
 # ---------------------------------------------------------------------------
 # STEP 2 -- The ideal diode (Shockley) equation
 # ---------------------------------------------------------------------------
-def current(V, T=T_REF, n=N, Is=IS_REF):
+def current(V, T=T_REF, n=N, Is=None):
     """
     The Shockley equation. Current rises EXPONENTIALLY with voltage, which is
     why a diode conducts almost nothing below ~0.6 V and then turns on hard.
 
-        I = Is * ( exp( V / (n * V_T) ) - 1 )
+        I = Is(T) * ( exp( V / (n * V_T) ) - 1 )
 
-    V may be a single number or a numpy array -- np.exp handles both.
-
-    Sanity target: at V = 0 you must get exactly 0. (Check the -1 term.)
+    Is defaults to the temperature-dependent saturation current, so raising T
+    correctly increases current. Pass Is explicitly to override.
     """
     VT = thermal_voltage(T)
+    if Is is None:
+        Is = saturation_current(T, n)
     return Is * (np.exp(V / (n * VT)) - 1)
-
 
 
 # ---------------------------------------------------------------------------
