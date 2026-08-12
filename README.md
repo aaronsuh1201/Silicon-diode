@@ -7,12 +7,36 @@ temperature dependence, and the effect of series resistance.
 
 ## Result
 
-Holding forward current fixed at 10 mA and sweeping temperature from 275 K to
-350 K, the forward voltage decreases linearly at:
+**Figure 1 — I–V characteristic at 300 K.**
+The modeled current rises exponentially with forward voltage, with no
+threshold in the equation itself. Current becomes visible on a linear
+scale near [0.6] V, but this is a plotting artifact rather than a
+physical turn-on point.
 
-**dV_f/dT = −2.02 mV/K**
+**Figure 2 — Semi-log I–V characteristic.**
+Plotted on a log current axis, the forward region is a straight line,
+confirming the exponential form. The slope corresponds to roughly
+60 mV per decade of current at room temperature — i.e. current changes
+by a factor of 10 for every 60 mV of applied voltage. Over the range
+plotted, current spans approximately [N] decades.
 
-This matches the accepted value for silicon diodes of approximately −2 mV/K.
+**Figure 3 — Forward voltage vs. temperature at fixed current.**
+Holding forward current fixed at 10 mA and sweeping temperature from
+275 K to 350 K, forward voltage falls approximately linearly:
+
+    dV_f/dT = −2.02 mV/K
+
+This agrees with the accepted value for silicon diodes of roughly
+−2 mV/K.
+
+The negative sign reflects two competing temperature effects. The
+thermal voltage V_T = kT/q rises with temperature, which alone would
+require *higher* forward voltage to hold current constant. But the
+saturation current I_S rises far more steeply, since I_S ∝ n_i² and
+n_i² ∝ T³·exp(−E_g/kT). The I_S term dominates, so forward voltage
+must fall to keep current fixed. Because E_g/q is the largest term in
+the analytical expression, this temperature coefficient is effectively
+an indirect measurement of the silicon band gap.
 
 ## What this does
 
